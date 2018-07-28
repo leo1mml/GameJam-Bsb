@@ -6,14 +6,16 @@ public class GeloController : MonoBehaviour {
 
     public Sprite geloSprite;
 
-    private Animation animationQuebrando;
     private SpriteRenderer spriteRenderer;
-    private int qtdColision = 0;
+    [HideInInspector]
+    public Animator animator;
+    [HideInInspector]
+    public int qtdColision = 0;
 
 	// Use this for initialization
 	void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animationQuebrando = GetComponent<Animation>();
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -24,11 +26,27 @@ public class GeloController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.collider.tag.Equals("Player")){
             if(qtdColision == 0){
-                spriteRenderer.sprite = geloSprite;
+                RemoveSnow();
                 qtdColision++;
             }else if (qtdColision == 1){
-                animationQuebrando.Play();
+                BrokenIce();
+                collision.gameObject.GetComponent<PlayerMovement>().isJumping = true;
             }
         }
+    }
+
+    public void RemoveSnow(){
+        animator.SetBool("isRemovingSnow", true);
+        AudioManager.instance.Play("IceSliding");
+    }
+
+    public void BrokenIce() {
+        GetComponent<BoxCollider2D>().enabled = false;
+        animator.SetBool("isBroken", true);
+        AudioManager.instance.Play("IceCracking");
+    }
+
+    public void DestroyTile(){
+        Destroy(gameObject);
     }
 }

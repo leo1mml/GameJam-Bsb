@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
 
     private bool isGrounded;
-    private bool isJumping = false;
+    [HideInInspector]
+    public bool isJumping = false;
 
     private Rigidbody2D rgb2d;
     private SpriteRenderer sprite;
@@ -76,21 +77,15 @@ public class PlayerMovement : MonoBehaviour
         if (collision.collider.tag.Equals("Gelo")) {
             rgb2d.sharedMaterial = geloMaterial;
             maxSpeed = 15;
-            if (collision.gameObject.GetComponent<SpriteRenderer>().color.Equals(new Color(0f, 0f, 1f))) {
-                //Destroy(collision.gameObject);
-                isJumping = true;
-                maxSpeed = 5;
-                AudioManager.instance.Play("IceCracked");
-                AudioManager.instance.Play("IceSliding");
-            } else {
-                //collision.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 1f);
-                AudioManager.instance.Play("IceCracking");
-            }
+            GeloController geloController = collision.gameObject.GetComponent<GeloController>();
+
+            //if (geloController.qtdColision == 1) {
+            //    isJumping = true;
+            //}
 
             if (isJumping) {
-                //Destroy(collision.gameObject);
+                geloController.BrokenIce();
                 maxSpeed = 5;
-                AudioManager.instance.Play("IceCracked");
             }
         }
 
