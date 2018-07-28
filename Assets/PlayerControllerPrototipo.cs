@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerControllerPrototipo : MonoBehaviour {
 
     private Rigidbody2D rb;
     private bool isJumping = false;
