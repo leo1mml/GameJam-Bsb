@@ -51,4 +51,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d7da2f25cf24ef7a94a5e87398e345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: Wind
+    clip: {fileID: 8300000, guid: bf815224e8ee24e4c9d992ab5cbc7623, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Footstep
+    clip: {fileID: 8300000, guid: d073021a4b8b1404e83706863b809383, type: 3}
+    volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+    loop: 1
+  - name: IceCracked
+    clip: {fileID: 8300000, guid: f7a2a5c3de06142f3b955b2f06c9aa81, type: 3}
+    volume: 1
+    pitch: 1.9
+    source: {fileID: 0}
+    loop: 0
+  - name: IceCracking
+    clip: {fileID: 8300000, guid: ddd8d64b5003141b4a2797b922fae356, type: 3}
+    volume: 1
+    pitch: 1.9
+    source: {fileID: 0}
+    loop: 0
+  - name: IceSliding
+    clip: {fileID: 8300000, guid: 92f5bf360b8d3473e8c7c23e649865de, type: 3}
+    volume: 1
+    pitch: 1.9
+    source: {fileID: 0}
+    loop: 0
+  - name: Theme
+    clip: {fileID: 8300000, guid: 4148aef3b7ed544d88d3fb8608f2e756, type: 3}
+    volume: 0.093
+    pitch: 0.8
+    source: {fileID: 0}
+    loop: 1

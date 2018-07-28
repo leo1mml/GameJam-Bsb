@@ -8,9 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed;
     public float jumpForce;
 
-    private bool isGrounded;
     [HideInInspector]
     public bool isJumping = false;
+    private bool isGrounded;
 
     private Rigidbody2D rgb2d;
     private SpriteRenderer sprite;
@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public BoxCollider2D groundCheck;
 
     public LayerMask groundLayer;
+    public GameObject dash;
 
     private void Awake()
     {
@@ -44,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            Object.Instantiate(dash, new Vector3(rgb2d.position.x, rgb2d.position.y, 0f), Quaternion.identity);
             rgb2d.AddForce(new Vector2(0f, jumpForce));
             isJumping = true;
             maxSpeed = 5;
@@ -54,9 +56,29 @@ public class PlayerMovement : MonoBehaviour
     {
         float move = Input.GetAxis("Horizontal");
 
+        if(rgb2d.velocity.Equals(Vector2.zero)){
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isGround", true);
+            animator.SetBool("isFalling", false);
+        }
+
+        if ((rgb2d.velocity.x > 0 || rgb2d.velocity.x < 0) && rgb2d.velocity.y.Equals(0)) {
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isGround", true);
+            animator.SetBool("isFalling", false);
+        }
+
+        if (rgb2d.velocity.y > 0) {
+            animator.SetBool("isGround", false);
+        }
+
+        if (rgb2d.velocity.y < 0) {
+            animator.SetBool("isFalling", true);
+        }
+
         if (move.Equals(0))
             AudioManager.instance.Pause("Footstep");
-        else
+        else if(rgb2d.velocity.y.Equals(0) && !move.Equals(0))
             AudioManager.instance.Play("Footstep");
             
 
@@ -78,10 +100,6 @@ public class PlayerMovement : MonoBehaviour
             rgb2d.sharedMaterial = geloMaterial;
             maxSpeed = 15;
             GeloController geloController = collision.gameObject.GetComponent<GeloController>();
-
-            //if (geloController.qtdColision == 1) {
-            //    isJumping = true;
-            //}
 
             if (isJumping) {
                 geloController.BrokenIce();

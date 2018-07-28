@@ -35,9 +35,8 @@ public class AudioManager : MonoBehaviour {
 	/// </summary>
 	void Start()
 	{
-        //Play("Theme");
-        //Play("Wind");
-        //Play("Footstep");
+        Play("Theme");
+        Play("Wind");
 	}
 	
 	public void Play(string name) {
