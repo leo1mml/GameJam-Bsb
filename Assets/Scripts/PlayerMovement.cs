@@ -2,37 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
-    private Rigidbody2D rb;
-    private float horizontalDirection;
-    private float verticalDirection;
-    public float velocity;
+    public float maxSpeed;
+    public float jumpForce;
 
+    private bool isGrounded;
+    private bool isJumping;
+
+    private Rigidbody2D rgb2d;
+    private SpriteRenderer sprite;
+
+    public BoxCollider2D groundCheck;
+
+    public LayerMask groundLayer;
+
+    private void Awake()
+    {
+        rgb2d = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+    }
 
     // Use this for initialization
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalDirection = Input.GetAxis("Horizontal");
-        verticalDirection = Input.GetAxis("Vertical");
-        rb.AddForce(new Vector2(horizontalDirection * velocity, verticalDirection * velocity));
+        isGrounded = Physics2D.OverlapBox(groundCheck.transform.position, groundCheck.size, groundCheck.transform.rotation.z, groundLayer);
 
-
-        if (Mathf.Approximately(horizontalDirection, 0.0f))
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            isJumping = true;
         }
-
-        if (Mathf.Approximately(verticalDirection, 0.0f))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-        }
-
     }
+
+    private void FixedUpdate()
+    {
+        float move = Input.GetAxis("Horizontal");
+
+        rgb2d.velocity = new Vector2(move * maxSpeed, rgb2d.velocity.y);
+
+        if (move > 0f && sprite.flipX || move < 0f && !sprite.flipX)
+        {
+            sprite.flipX = !sprite.flipX;
+        }
+
+        if (isJumping)
+        {
+            rgb2d.AddForce(new Vector2(0f, jumpForce));
+            isJumping = false;
+        }
+    }
+
 }
