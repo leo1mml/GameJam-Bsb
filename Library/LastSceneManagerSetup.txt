@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/PlayerMovement.unity
+=======
+- path: Assets/Scenes/Gabriel.unity
+>>>>>>> tilesObject
   isLoaded: 1
   isActive: 1
