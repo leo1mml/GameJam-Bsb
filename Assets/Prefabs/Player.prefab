@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549435194286614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.606, y: 5.618, z: 0}
+  m_LocalPosition: {x: -23.631561, y: 2.4325929, z: 0}
   m_LocalScale: {x: 5.0864635, y: 5.0864635, z: 5.0864635}
   m_Children:
   - {fileID: 4510973953787894}
@@ -182,6 +182,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 768
+  dash: {fileID: 1282211117577442, guid: f3548705c84c742a5abf334a816622e2, type: 2}
 --- !u!212 &212002916209033226
 SpriteRenderer:
   m_ObjectHideFlags: 1
