@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/PlayerMovement.unity
-=======
-- path: Assets/Scenes/Gabriel.unity
->>>>>>> tilesObject
+- path: Assets/Scenes/Mapa1.unity
   isLoaded: 1
   isActive: 1

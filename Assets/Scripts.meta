@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 0d5974ba85a9f4ffea48725645dd4b62
+=======
+guid: c8e413aeb9ea54a66823159a3abec758
+>>>>>>> audio-experiments
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
