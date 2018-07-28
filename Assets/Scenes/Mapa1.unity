@@ -2590,7 +2590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 387281526}
   - component: {fileID: 387281527}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tile Layer 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4949,7 +4949,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762011684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -19.93, y: 3.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7088,13 +7088,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1086679509}
   - component: {fileID: 1086679508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mapa_1
-  m_TagString: Untagged
+  m_TagString: Pedra
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1086679508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11691,6 +11691,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4551153469200664, guid: 1532b9b4ab981482384fca6b7cfb8d78,
     type: 2}
   m_PrefabInternal: {fileID: 2017855234}
+--- !u!1001 &2019986027
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4465527596106766, guid: 362689e0bd38a43eabf71443b8af6fd5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -24.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465527596106766, guid: 362689e0bd38a43eabf71443b8af6fd5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 13.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465527596106766, guid: 362689e0bd38a43eabf71443b8af6fd5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465527596106766, guid: 362689e0bd38a43eabf71443b8af6fd5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465527596106766, guid: 362689e0bd38a43eabf71443b8af6fd5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465527596106766, guid: 362689e0bd38a43eabf71443b8af6fd5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465527596106766, guid: 362689e0bd38a43eabf71443b8af6fd5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465527596106766, guid: 362689e0bd38a43eabf71443b8af6fd5, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1118792842148638, guid: 362689e0bd38a43eabf71443b8af6fd5, type: 2}
+      propertyPath: m_Name
+      value: Mapa_1 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 362689e0bd38a43eabf71443b8af6fd5, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &2041393105
 GameObject:
   m_ObjectHideFlags: 0
