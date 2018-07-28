@@ -35,9 +35,9 @@ public class AudioManager : MonoBehaviour {
 	/// </summary>
 	void Start()
 	{
-		Play("theme");
-		Play("snow-wind");
-		Play("footstep");
+        //Play("Theme");
+        //Play("Wind");
+        //Play("Footstep");
 	}
 	
 	public void Play(string name) {
@@ -46,7 +46,8 @@ public class AudioManager : MonoBehaviour {
 			Debug.LogWarning("Sound " + name + "not found!");
 			return;
 		}
-		s.source.Play();
+        if(!s.source.isPlaying)
+		    s.source.Play();
 	}
 
 	public void Pause(string name) {

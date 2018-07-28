@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator animator;
 
+    public PhysicsMaterial2D geloMaterial;
+    public PhysicsMaterial2D playerMaterial;
     public BoxCollider2D groundCheck;
 
     public LayerMask groundLayer;
@@ -51,6 +53,12 @@ public class PlayerMovement : MonoBehaviour
     {
         float move = Input.GetAxis("Horizontal");
 
+        if (move.Equals(0))
+            AudioManager.instance.Pause("Footstep");
+        else
+            AudioManager.instance.Play("Footstep");
+            
+
         rgb2d.velocity = new Vector2(move * maxSpeed, rgb2d.velocity.y);
         animator.SetFloat("Velocity", Mathf.Abs(rgb2d.velocity.x));
 
@@ -66,22 +74,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.tag.Equals("Gelo")) {
+            rgb2d.sharedMaterial = geloMaterial;
             maxSpeed = 15;
             if (collision.gameObject.GetComponent<SpriteRenderer>().color.Equals(new Color(0f, 0f, 1f))) {
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
                 isJumping = true;
                 maxSpeed = 5;
+                AudioManager.instance.Play("IceCracked");
+                AudioManager.instance.Play("IceSliding");
             } else {
-                collision.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 1f);
+                //collision.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 1f);
+                AudioManager.instance.Play("IceCracking");
             }
 
             if (isJumping) {
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
                 maxSpeed = 5;
+                AudioManager.instance.Play("IceCracked");
             }
         }
 
         if (collision.collider.tag.Equals("Pedra")) {
+            rgb2d.sharedMaterial = playerMaterial;
             maxSpeed = 10;
             isJumping = false;
         }
