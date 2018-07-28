@@ -4849,7 +4849,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762011684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.383, y: 2.72, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6910,12 +6910,12 @@ Prefab:
     - target: {fileID: 61384527702255900, guid: fb416e9129008426f89bb40e8ad2b4a8,
         type: 2}
       propertyPath: m_Offset.x
-      value: -0.00028332323
+      value: 0.0019795187
       objectReference: {fileID: 0}
     - target: {fileID: 61384527702255900, guid: fb416e9129008426f89bb40e8ad2b4a8,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.15546557
+      value: 0.1002508
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61821694970113128, guid: fb416e9129008426f89bb40e8ad2b4a8, type: 2}
@@ -6926,8 +6926,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1549435194286614, guid: fb416e9129008426f89bb40e8ad2b4a8,
     type: 2}
   m_PrefabInternal: {fileID: 1082870376}
---- !u!70 &1082870378
-CapsuleCollider2D:
+--- !u!61 &1082870378
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -6938,9 +6938,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05004888}
-  m_Size: {x: 0.16, y: 0.22009894}
-  m_Direction: 0
+  m_Offset: {x: -0.00020338967, y: -0.049996153}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.32}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.09973041, y: 0.2199521}
+  m_EdgeRadius: 0
 --- !u!1001 &1083647759
 Prefab:
   m_ObjectHideFlags: 0
