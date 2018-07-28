@@ -27,6 +27,18 @@ public class AudioManager : MonoBehaviour {
 			s.source.loop = s.loop;
 		}
 	}
+
+
+	/// <summary>
+	/// Start is called on the frame when a script is enabled just before
+	/// any of the Update methods is called the first time.
+	/// </summary>
+	void Start()
+	{
+		Play("theme");
+		Play("snow-wind");
+		Play("footstep");
+	}
 	
 	public void Play(string name) {
 		Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -36,5 +48,13 @@ public class AudioManager : MonoBehaviour {
 		}
 		s.source.Play();
 	}
-	
+
+	public void Pause(string name) {
+		Sound s = Array.Find(sounds, sound => sound.name == name);
+		if(s == null){
+			Debug.LogWarning("Sound " + name + "not found!");
+			return;
+		}
+		s.source.Pause();
+	}
 }
