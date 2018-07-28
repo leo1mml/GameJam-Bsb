@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
 
     private bool isGrounded;
-    private bool isJumping;
+    private bool isJumping = false;
 
     private Rigidbody2D rgb2d;
     private SpriteRenderer sprite;
@@ -41,7 +41,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            rgb2d.AddForce(new Vector2(0f, jumpForce));
             isJumping = true;
+            maxSpeed = 5;
         }
     }
 
@@ -56,16 +58,33 @@ public class PlayerMovement : MonoBehaviour
         {
             sprite.flipX = !sprite.flipX;
         }
-
-        if (isJumping)
-        {
-            rgb2d.AddForce(new Vector2(0f, jumpForce));
-            isJumping = false;
-        }
     }
 
     void PlayerDeath() {
         animator.SetTrigger("isDead");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.tag.Equals("Gelo")) {
+            maxSpeed = 15;
+            if (collision.gameObject.GetComponent<SpriteRenderer>().color.Equals(new Color(0f, 0f, 1f))) {
+                Destroy(collision.gameObject);
+                isJumping = true;
+                maxSpeed = 5;
+            } else {
+                collision.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 1f);
+            }
+
+            if (isJumping) {
+                Destroy(collision.gameObject);
+                maxSpeed = 5;
+            }
+        }
+
+        if (collision.collider.tag.Equals("Pedra")) {
+            maxSpeed = 10;
+            isJumping = false;
+        }
     }
 
 }
