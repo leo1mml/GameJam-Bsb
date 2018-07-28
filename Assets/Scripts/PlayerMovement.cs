@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rgb2d;
     private SpriteRenderer sprite;
+    private Animator animator;
 
     public BoxCollider2D groundCheck;
 
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rgb2d = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Use this for initialization
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapBox(groundCheck.transform.position, groundCheck.size, groundCheck.transform.rotation.z, groundLayer);
 
+        animator.SetBool("isGround", isGrounded);
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isJumping = true;
@@ -46,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         float move = Input.GetAxis("Horizontal");
 
         rgb2d.velocity = new Vector2(move * maxSpeed, rgb2d.velocity.y);
+        animator.SetFloat("Velocity", Mathf.Abs(rgb2d.velocity.x));
 
         if (move > 0f && sprite.flipX || move < 0f && !sprite.flipX)
         {
@@ -57,6 +62,10 @@ public class PlayerMovement : MonoBehaviour
             rgb2d.AddForce(new Vector2(0f, jumpForce));
             isJumping = false;
         }
+    }
+
+    void PlayerDeath() {
+        animator.SetTrigger("isDead");
     }
 
 }
