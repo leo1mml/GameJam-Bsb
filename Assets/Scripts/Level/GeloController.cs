@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GeloController : MonoBehaviour {
 
+    public enum IceState {Neve,Gelo};
+
     public Sprite geloSprite;
 
     private SpriteRenderer spriteRenderer;
@@ -11,11 +13,17 @@ public class GeloController : MonoBehaviour {
     public Animator animator;
     [HideInInspector]
     public int qtdColision = 0;
+    public IceState estado;
 
 	// Use this for initialization
 	void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        if(estado.Equals(IceState.Gelo)){
+            qtdColision = 1;
+            RemoveSnow();
+        }
 	}
 	
 	// Update is called once per frame
@@ -25,12 +33,22 @@ public class GeloController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.collider.tag.Equals("Player")){
-            if(qtdColision == 0){
-                RemoveSnow();
-                qtdColision++;
-            }else if (qtdColision == 1){
+            if (qtdColision == 1){
                 BrokenIce();
                 collision.gameObject.GetComponent<PlayerMovement>().isJumping = true;
+            }
+
+            if (collision.collider.gameObject.GetComponent<PlayerMovement>().isJumping) {
+                BrokenIce();
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (collision.collider.tag.Equals("Player")) {
+            if (qtdColision == 0) {
+                RemoveSnow();
+                qtdColision++;
             }
         }
     }
@@ -40,7 +58,7 @@ public class GeloController : MonoBehaviour {
     }
 
     public void BrokenIce() {
-        GetComponent<BoxCollider2D>().enabled = false;
+        //GetComponent<BoxCollider2D>().enabled = false;
         animator.SetBool("isBroken", true);
         AudioManager.instance.Play("IceCracking");
     }
