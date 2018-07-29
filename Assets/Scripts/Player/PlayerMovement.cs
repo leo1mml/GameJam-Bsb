@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public bool isJumping = false;
     private bool isGrounded;
-    private bool isDead = false;
+    [HideInInspector]
+    public bool isDead = false;
 
     private Rigidbody2D rgb2d;
     private SpriteRenderer sprite;
@@ -131,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.tag.Equals("Gelo")) {
-            maxSpeed = 5;
+            maxSpeed = 10;
             GeloController geloController = collision.gameObject.GetComponent<GeloController>();
 
             if (isJumping) {
@@ -142,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (collision.collider.tag.Equals("Pedra")) {
-            maxSpeed = 10;
+            maxSpeed = 5;
             isJumping = false;
         }
 
