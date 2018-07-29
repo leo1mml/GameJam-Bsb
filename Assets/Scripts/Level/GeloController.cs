@@ -37,7 +37,6 @@ public class GeloController : MonoBehaviour {
 
     public void RemoveSnow(){
         animator.SetBool("isRemovingSnow", true);
-        AudioManager.instance.Play("IceSliding");
     }
 
     public void BrokenIce() {
