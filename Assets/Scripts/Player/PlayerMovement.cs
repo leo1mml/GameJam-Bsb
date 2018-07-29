@@ -105,7 +105,6 @@ public class PlayerMovement : MonoBehaviour
             
 
         rgb2d.velocity = new Vector2(move * maxSpeed, rgb2d.velocity.y);
-        animator.SetFloat("Velocity", Mathf.Abs(rgb2d.velocity.x));
 
         if (move > 0f && sprite.flipX || move < 0f && !sprite.flipX)
         {
