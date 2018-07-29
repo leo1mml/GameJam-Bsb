@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (isJumping) {
                 //geloController.BrokenIce();
-                maxSpeed = 5;
+               // maxSpeed = 5;
                 isJumping = false;
             }
         }
