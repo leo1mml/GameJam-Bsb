@@ -806,8 +806,9 @@ PolygonCollider2D:
       - {x: -45.120987, y: -3.0740778}
       - {x: -44.864594, y: -17.549791}
       - {x: 4.9289513, y: -17.285803}
-      - {x: 69.94907, y: -17.086782}
-      - {x: 70.08889, y: 11.177168}
+      - {x: 61.527184, y: -16.890924}
+      - {x: 61.404564, y: -4.0473924}
+      - {x: 61.278275, y: 11.275064}
 --- !u!4 &111499263
 Transform:
   m_ObjectHideFlags: 0
@@ -5876,6 +5877,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 20.17976
       objectReference: {fileID: 0}
+    - target: {fileID: 114106482458415642, guid: 1532b9b4ab981482384fca6b7cfb8d78,
+        type: 2}
+      propertyPath: estado
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1532b9b4ab981482384fca6b7cfb8d78, type: 2}
   m_IsPrefabAsset: 0
@@ -10097,7 +10103,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1637837680933118, guid: 93c85bf67f46b48abbabc9873eb106a5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93c85bf67f46b48abbabc9873eb106a5, type: 2}
@@ -10480,6 +10486,11 @@ Prefab:
     - target: {fileID: 4551153469200664, guid: 1532b9b4ab981482384fca6b7cfb8d78, type: 2}
       propertyPath: m_LocalScale.z
       value: 20.17976
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106482458415642, guid: 1532b9b4ab981482384fca6b7cfb8d78,
+        type: 2}
+      propertyPath: estado
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1532b9b4ab981482384fca6b7cfb8d78, type: 2}
@@ -12370,7 +12381,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4458891087593208, guid: a785fac52a4fd4b98b081585d187a4b4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 4458891087593208, guid: a785fac52a4fd4b98b081585d187a4b4, type: 2}
       propertyPath: m_LocalRotation.x
