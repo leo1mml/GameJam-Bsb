@@ -127,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void PlayerDeath() {
+        AudioManager.instance.Pause("Footstep");
         animator.SetTrigger("isDead");
     }
 
