@@ -22,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private float qtdFome = 100;
     private float lenthFome;
 
-    public PhysicsMaterial2D geloMaterial;
-    public PhysicsMaterial2D playerMaterial;
     public BoxCollider2D groundCheck;
     public RectTransform barraFome;
 
@@ -109,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isFalling", true);
         }
 
-        if (move.Equals(0)) {
+        if (move.Equals(0) || isJumping) {
             AudioManager.instance.Pause("Footstep");
             countParado++;
         } else if (rgb2d.velocity.y.Equals(0) && !move.Equals(0)) {
@@ -133,19 +131,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.tag.Equals("Gelo")) {
-            rgb2d.sharedMaterial = geloMaterial;
-            maxSpeed = 15;
+            maxSpeed = 5;
             GeloController geloController = collision.gameObject.GetComponent<GeloController>();
 
             if (isJumping) {
-                geloController.BrokenIce();
+                //geloController.BrokenIce();
                 maxSpeed = 5;
                 isJumping = false;
             }
         }
 
         if (collision.collider.tag.Equals("Pedra")) {
-            rgb2d.sharedMaterial = playerMaterial;
             maxSpeed = 10;
             isJumping = false;
         }
