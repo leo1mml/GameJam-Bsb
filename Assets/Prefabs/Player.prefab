@@ -179,6 +179,8 @@ MonoBehaviour:
   geloMaterial: {fileID: 6200000, guid: 3bf174aca62254e70b0921d38954c45c, type: 2}
   playerMaterial: {fileID: 6200000, guid: 656c2fd5a3be6423cac9448788217248, type: 2}
   groundCheck: {fileID: 61384527702255900}
+  barraFome: {fileID: 224825896457510646, guid: 93c85bf67f46b48abbabc9873eb106a5,
+    type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 768
