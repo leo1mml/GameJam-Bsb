@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public bool isJumping = false;
     private bool isGrounded;
+    private bool isDead = false;
 
     private Rigidbody2D rgb2d;
     private SpriteRenderer sprite;
@@ -46,6 +47,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isDead){
+            rgb2d.velocity = Vector2.zero;
+            return;
+        }
         isGrounded = Physics2D.OverlapBox(groundCheck.transform.position, groundCheck.size, groundCheck.transform.rotation.z, groundLayer);
 
         animator.SetBool("isGround", isGrounded);
@@ -69,10 +74,19 @@ public class PlayerMovement : MonoBehaviour
             barraFome.sizeDelta = new Vector2((qtdFome / 100) * lenthFome, barraFome.sizeDelta.y);
             countAndando = -1;
         }
+
+        if(qtdFome <= 0){
+            isDead = true;
+            PlayerDeath();
+        }
     }
 
     private void FixedUpdate()
     {
+        if (isDead) {
+            rgb2d.velocity = Vector2.zero;
+            return;
+        }
         float move = Input.GetAxis("Horizontal");
 
         if(rgb2d.velocity.Equals(Vector2.zero)){
