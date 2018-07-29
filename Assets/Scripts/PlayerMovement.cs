@@ -16,9 +16,15 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator animator;
 
+    private int countParado = 0;
+    private int countAndando = 0;
+    private float qtdFome = 100;
+    private float lenthFome;
+
     public PhysicsMaterial2D geloMaterial;
     public PhysicsMaterial2D playerMaterial;
     public BoxCollider2D groundCheck;
+    public RectTransform barraFome;
 
     public LayerMask groundLayer;
     public GameObject dash;
@@ -28,12 +34,13 @@ public class PlayerMovement : MonoBehaviour
         rgb2d = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        lenthFome = barraFome.sizeDelta.x;
     }
 
     // Use this for initialization
     void Start()
     {
-
+        lenthFome = barraFome.sizeDelta.x;
     }
 
     // Update is called once per frame
@@ -49,6 +56,18 @@ public class PlayerMovement : MonoBehaviour
             rgb2d.AddForce(new Vector2(0f, jumpForce));
             isJumping = true;
             maxSpeed = 5;
+        }
+
+        if(countParado >= 60){
+            qtdFome -= 2;
+            barraFome.sizeDelta = new Vector2((qtdFome / 100) * lenthFome, barraFome.sizeDelta.y);
+            countParado = -1;
+        }
+
+        if(countAndando >= 60){
+            qtdFome -= 4;
+            barraFome.sizeDelta = new Vector2((qtdFome / 100) * lenthFome, barraFome.sizeDelta.y);
+            countAndando = -1;
         }
     }
 
@@ -76,10 +95,13 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isFalling", true);
         }
 
-        if (move.Equals(0))
+        if (move.Equals(0)) {
             AudioManager.instance.Pause("Footstep");
-        else if(rgb2d.velocity.y.Equals(0) && !move.Equals(0))
+            countParado++;
+        } else if (rgb2d.velocity.y.Equals(0) && !move.Equals(0)) {
             AudioManager.instance.Play("Footstep");
+            countAndando++;
+        }
             
 
         rgb2d.velocity = new Vector2(move * maxSpeed, rgb2d.velocity.y);
