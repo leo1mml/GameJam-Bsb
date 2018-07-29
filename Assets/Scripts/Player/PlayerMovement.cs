@@ -148,6 +148,16 @@ public class PlayerMovement : MonoBehaviour
             maxSpeed = 10;
             isJumping = false;
         }
+
+        if (collision.collider.tag.Equals("Coletavel")){
+            if (qtdFome <= 50)
+                qtdFome += 50;
+            else
+                qtdFome = 100;
+            barraFome.sizeDelta = new Vector2((qtdFome / 100) * lenthFome, barraFome.sizeDelta.y);
+            Destroy(collision.gameObject);
+        }
+
     }
 
 }
