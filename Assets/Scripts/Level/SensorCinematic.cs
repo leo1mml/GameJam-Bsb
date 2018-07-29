@@ -7,6 +7,7 @@ public class SensorCinematic : MonoBehaviour {
 
     public PlayableDirector playableDirector;
     public Canvas barraFome;
+    public Sprite playerSprite;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,7 @@ public class SensorCinematic : MonoBehaviour {
         if (collision.tag.Equals("Player")) {
             collision.gameObject.GetComponent<PlayerMovement>().isDead = true;
             StartCoroutine(Parar(collision.gameObject));
+            StartCoroutine(Creditos(collision.gameObject));
         }
         AudioManager.instance.Pause("Footstep");
     }
@@ -31,7 +33,11 @@ public class SensorCinematic : MonoBehaviour {
     IEnumerator Parar(GameObject gameObject){
         yield return new WaitForSeconds(3f);
         gameObject.GetComponent<Animator>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().sprite = playerSprite;
     }
 
+    IEnumerator Creditos(GameObject gameObject){
+        yield return new WaitForSeconds(4f);
+    }
 
 }
