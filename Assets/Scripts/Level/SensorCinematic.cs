@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class SensorCinematic : MonoBehaviour {
 
@@ -37,7 +38,10 @@ public class SensorCinematic : MonoBehaviour {
     }
 
     IEnumerator Creditos(GameObject gameObject){
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(5f);
+        print("oi");
+        SceneManager.LoadScene("Credits",LoadSceneMode.Additive);
+
     }
 
 }
